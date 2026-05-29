@@ -5,7 +5,7 @@ import { createClient } from '@/lib/supabase/client'
 import {
   MessageSquare,
   UserPlus,
-  DollarSign,
+  IndianRupee,
   Send,
 } from 'lucide-react'
 
@@ -156,7 +156,7 @@ export default function DashboardPage() {
             <MetricCard
               title="Open Deals Value"
               value={formatCurrency(metrics.openDealsValue)}
-              icon={DollarSign}
+              icon={IndianRupee}
               subtitle={`${metrics.openDealsCount} open deal${metrics.openDealsCount === 1 ? '' : 's'}`}
             />
             <MetricCard
@@ -212,9 +212,9 @@ export default function DashboardPage() {
 // ------------------------------------------------------------
 
 function formatCurrency(v: number): string {
-  return new Intl.NumberFormat(undefined, {
+  return new Intl.NumberFormat('en-IN', {
     style: 'currency',
-    currency: 'USD',
+    currency: 'INR',
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   }).format(v)

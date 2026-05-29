@@ -11,9 +11,11 @@ interface DealCardProps {
 }
 
 function formatCurrency(value: number, currency?: string) {
-  return new Intl.NumberFormat("en-US", {
+  const finalCurrency = currency || "INR";
+  const locale = finalCurrency === "INR" ? "en-IN" : "en-US";
+  return new Intl.NumberFormat(locale, {
     style: "currency",
-    currency: currency || "USD",
+    currency: finalCurrency,
     minimumFractionDigits: 0,
     maximumFractionDigits: 0,
   }).format(Number(value || 0));
