@@ -84,7 +84,10 @@ export async function GET(request: Request) {
     const challenge = searchParams.get('hub.challenge')
     const verifyToken = searchParams.get('hub.verify_token')
 
+    console.log('[webhook GET] Incoming Meta verification:', { mode, verifyToken, challenge })
+
     if (mode !== 'subscribe' || !challenge || !verifyToken) {
+      console.warn('[webhook GET] Missing verification parameters.')
       return NextResponse.json(
         { error: 'Missing verification parameters' },
         { status: 400 }
@@ -138,6 +141,7 @@ export async function GET(request: Request) {
             }
           })
       }
+      console.log('[webhook GET] Verification result: SUCCESS')
       // Return challenge as plain text
       return new Response(challenge, {
         status: 200,
@@ -145,6 +149,7 @@ export async function GET(request: Request) {
       })
     }
 
+    console.warn('[webhook GET] Verification result: FAILED (Token mismatch)')
     return NextResponse.json(
       { error: 'Verification token mismatch' },
       { status: 403 }
