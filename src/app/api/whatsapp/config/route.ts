@@ -162,7 +162,7 @@ export async function POST(request: Request) {
     if (claimedError) {
       console.error('Error checking phone_number_id ownership:', claimedError)
       return NextResponse.json(
-        { error: 'Failed to validate configuration' },
+        { error: `Database validation failed: ${claimedError.message}` },
         { status: 500 }
       )
     }
@@ -235,7 +235,7 @@ export async function POST(request: Request) {
       if (updateError) {
         console.error('Error updating whatsapp_config:', updateError)
         return NextResponse.json(
-          { error: 'Failed to update configuration' },
+          { error: `Failed to update configuration in database: ${updateError.message}` },
           { status: 500 }
         )
       }
@@ -255,7 +255,7 @@ export async function POST(request: Request) {
       if (insertError) {
         console.error('Error inserting whatsapp_config:', insertError)
         return NextResponse.json(
-          { error: 'Failed to save configuration' },
+          { error: `Failed to insert configuration in database: ${insertError.message}` },
           { status: 500 }
         )
       }
