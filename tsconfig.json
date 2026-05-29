@@ -19,7 +19,24 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@/backend/*": ["./src/backend/*"],
+      "@/frontend/*": ["./src/frontend/*"],
+      "@/shared/*": ["./src/shared/*"],
+      "@/components/*": ["./src/frontend/components/*"],
+      "@/hooks/*": ["./src/frontend/hooks/*"],
+      "@/lib/ai/*": ["./src/backend/services/ai/*"],
+      "@/lib/automations/*": ["./src/backend/services/automations/*"],
+      "@/lib/flows/*": ["./src/backend/services/flows/*"],
+      "@/lib/whatsapp/*": ["./src/backend/services/whatsapp/*"],
+      "@/lib/dashboard/*": ["./src/backend/services/dashboard/*"],
+      "@/lib/rate-limit": ["./src/backend/services/rate-limit"],
+      "@/lib/broadcast-status": ["./src/backend/services/broadcast-status"],
+      "@/lib/supabase/server": ["./src/backend/db/server"],
+      "@/lib/supabase/client": ["./src/frontend/services/supabase"],
+      "@/lib/themes": ["./src/frontend/services/themes"],
+      "@/lib/utils": ["./src/shared/utils"],
+      "@/types": ["./src/shared/types"]
     }
   },
   "include": [
