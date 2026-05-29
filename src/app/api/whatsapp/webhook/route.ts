@@ -102,7 +102,7 @@ export async function GET(request: Request) {
     if (configError || !configs) {
       console.error('Error fetching configs for verification:', configError)
       return NextResponse.json(
-        { error: 'Verification failed' },
+        { error: `Verification failed: ${configError?.message || 'Configs not found'}` },
         { status: 403 }
       )
     }
